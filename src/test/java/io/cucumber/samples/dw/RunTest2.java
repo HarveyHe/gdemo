@@ -6,7 +6,7 @@ import cucumber.junit.Cucumber;
 
 @RunWith(Cucumber.class) 
 //@Cucumber.Options(format = {"pretty", "html:target/cucumber"}
-@Cucumber.Options(format = {"json:target/cucumber.json"}
+@Cucumber.Options(format = {"pretty","html:target/cucumber","json:target/cucumber.json"}
 , features = {"features/cucumberJava2.feature"}
 , glue = {"io.cucumber.samples.dw.steps2"}) 
 public class RunTest2 {
