@@ -1,13 +1,16 @@
 node {
    def mvnHome
    def scannerHome
-   stage('Preparation') { 
+   def dockerHome
+   stage('Setup') { 
 
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.           
       mvnHome = tool 'maven3.5.2'
       scannerHome = tool 'sonarqube3.0'
+      dockerHome = tool 'docker'
+      
 
    }
 
@@ -22,10 +25,10 @@ node {
    }
    stage('Unit Test') {
         echo 'TOTO:Test using mvn test'
-        sh "'${mvnHome}/bin/mvn'  -Dtest=RunTest2 test"
+        //sh "'${mvnHome}/bin/mvn' test"
     }
 
-   stage('Code Analysis') {
+   stage('Code Sonar Analysis') {
 
         echo 'TOTO: https://testerhome.com/topics/10323'
         echo 'mvn sonar:sonar'
@@ -39,21 +42,10 @@ node {
    
     }
 
-   stage('cucumber Test') {
-         steps {
-                //run your build
-              
-                sh "'${mvnHome}/bin/mvn'  clean verify "
-            }
-        post {
-             always {
-                 //generate cucumber reports
-                 cucumber '**/*.json'
-             }
-         }
-        //archive "cucumber-html-reports/*"
-        //step([$class: 'CucumberReportPublisher', jsonReportDirectory: "./", jenkinsBasePath: '', fileIncludePattern: 'cucumber.json'])
-    }
+   stage('Cucumber Test') {
+      sh "'${mvnHome}/bin/mvn'  -Dtest=RunTest2 test"
+      cucumber fileIncludePattern: '**/*.json', jsonReportDirectory: 'target'     
+   }
     
     stage('Release') {
 
@@ -67,7 +59,7 @@ node {
     }
     stage('Cleanup') {
      
-        cleanWs(deleteDirs: true)
+        //cleanWs(deleteDirs: true)
         //sh 'docker rmi -f $(docker images |grep \'lfs-terminal\'|awk {\'print $3\'})'
       
     }
