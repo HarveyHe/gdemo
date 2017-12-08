@@ -47,18 +47,6 @@ public class TestEntity {
 	public void setResult(Object result) {
 		this.result = result;
 	}
-	
-	public static TestEntity getReturn(Boolean error,String message,Object obj) {
-		TestEntity result = new TestEntity();
-		result.setError(error);
-		result.setMessage(message);
-		result.setResult(obj);
-		return result;
-	} 
-	public void setReturn(Boolean error,String message,Object result){
-		this.result=result;
-		this.error=error;
-		this.message=message;
-	}
 }
+	
 
