@@ -3,10 +3,7 @@ node {
    def scannerHome
    def dockerHome
    stage('Setup') { 
-
-      // Get the Maven tool.
-      // ** NOTE: This 'M3' Maven tool must be configured
-      // **       in the global configuration.           
+         
       mvnHome = tool 'maven3.5.2'
       scannerHome = tool 'sonarqube3.0'
       dockerHome = tool 'docker'
