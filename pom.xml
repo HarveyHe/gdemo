@@ -8,41 +8,26 @@
 	<version>SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>gdemo</name>
-	
-	<properties>
-		<cucumber.version>1.0.2</cucumber.version>
-	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>${cucumber.version}</version>
-			<!-- <scope>test</scope> -->
+			<version>1.2.5</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-junit</artifactId>
-			<version>${cucumber.version}</version>
-			<!-- <scope>test</scope> -->
+			<version>1.2.5</version>
 		</dependency>
-	
-	
-	
+
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>2.47.1</version>
 		</dependency>
-		<dependency> 
-		   <groupId>junit</groupId> 
-		   <artifactId>junit</artifactId> 
-		   <version>4.10</version> 
-		  <!--  <scope>test</scope>  -->
-		</dependency>
+
 	</dependencies>
-
-
 
 </project>
