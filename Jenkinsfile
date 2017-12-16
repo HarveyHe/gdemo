@@ -6,6 +6,11 @@ pipeline {
         }
     }
     stages {
+        stage('args code') {
+            steps {
+                echo branch
+            }
+        }
         stage('code') {
             steps {
                 git 'https://github.com/HarveyHe/gdemo.git'
