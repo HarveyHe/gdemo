@@ -51,10 +51,11 @@ pipeline {
             //}
         }
         stage('Cleanup') {
-            echo 'Cleanup'
-            cleanWs(deleteDirs: true)
-            //sh 'docker rmi -f $(docker images |grep \'lfs-terminal\'|awk {\'print $3\'})'
-
+            steps {
+                    echo 'Cleanup'
+                    cleanWs(deleteDirs: true)
+                    //sh 'docker rmi -f $(docker images |grep \'lfs-terminal\'|awk {\'print $3\'})'
+            }
         }
     }
 }
