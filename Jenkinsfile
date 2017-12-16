@@ -13,7 +13,8 @@ pipeline {
         }
         stage('code') {
             steps {
-                git 'https://github.com/HarveyHe/gdemo.git'
+                echo 'code'
+                //git 'https://github.com/HarveyHe/gdemo.git'
             }
         }
         stage('Deliver for development') {
