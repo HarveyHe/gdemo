@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('args code') {
             steps {
-                echo branch
+                echo ${branch}
             }
         }
         stage('code') {
