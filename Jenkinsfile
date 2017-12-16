@@ -44,11 +44,17 @@ pipeline {
             steps {
                 sh 'mvn test' 
             }
-            post {
-                always {
-                  junit 'target/surefire-reports/*.xml'
-                }
-            }
+            //post {
+              //  always {
+                //  junit 'target/surefire-reports/*.xml'
+              //  }
+            //}
+        }
+        stage('Cleanup') {
+            echo 'Cleanup'
+            cleanWs(deleteDirs: true)
+            //sh 'docker rmi -f $(docker images |grep \'lfs-terminal\'|awk {\'print $3\'})'
+
         }
     }
 }
