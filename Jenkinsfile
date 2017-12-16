@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('args code') {
             steps {
-                echo '${branch}'
+                echo '"$GIT_BRANCH"'
             }
         }
         stage('code') {
