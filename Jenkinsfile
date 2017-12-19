@@ -6,16 +6,29 @@ pipeline {
         }
     }
     stages {
-        
+        stage('args code0') {
+            steps {
+                step {
+                    echo "$GIT_BRANCH"
+                    echo env.BRANCH_NAME
+                }
+                step {
+                    echo "$GIT_BRANCH"
+                    echo env.BRANCH_NAME
+                }
+                
+            }
+        }
         stage('args code') {
             steps {
-                if (env.BRANCH_NAME == 'master') {
-                    echo 'I only execute on the master branch'
-                } else {
-                    echo 'I execute elsewhere'
+                script {
+                    if (env.BRANCH_NAME == 'master') {
+                        echo 'I only execute on the master branch'
+                    } else {
+                        echo 'I execute elsewhere'
+                    }
                 }
-                echo "$GIT_BRANCH"
-                echo env.BRANCH_NAME
+             
             }
         }
         stage('code') {
