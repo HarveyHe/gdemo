@@ -25,6 +25,8 @@ pipeline {
                         echo 'I execute elsewhere'
                     }
                 }
+                
+                sh 'mvn -B -DskipTests clean package' 
              
             }
         }
