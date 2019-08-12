@@ -1,21 +1,30 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine' 
-            args '-v /root/.m2:/root/.m2' 
-        }
+    agent any
+    tools {
+        maven 'apache-maven' 
     }
     stages {
-        
+        stage('args code0') {
+            steps {
+                
+
+                    echo env.BRANCH_NAME
+                
+                
+            }
+        }
         stage('args code') {
             steps {
-                if (env.BRANCH_NAME == 'master') {
-                    echo 'I only execute on the master branch'
-                } else {
-                    echo 'I execute elsewhere'
+                script {
+                    if (env.BRANCH_NAME == 'master') {
+                        echo 'I only execute on the master branch'
+                    } else {
+                        echo 'I execute elsewhere'
+                    }
                 }
-                echo "$GIT_BRANCH"
-                echo env.BRANCH_NAME
+                
+                sh 'mvn -B -DskipTests clean package' 
+             
             }
         }
         stage('code') {
